@@ -3,9 +3,10 @@ const mysql = require('mysql');
 
 // create connection
 const db = mysql.createConnection({
-    host:'localhost', 
-    user: 'meet_invest_admin',
-    password: 'Invest_now'
+    host:'localhost',
+    user: 'root',
+    password: 'admin_2020',
+    database: 'meetinvestdb'
 });
 
 // Connect
@@ -28,32 +29,15 @@ app.get('/createdb', (req, res) => {
     })
 })
 
-// db.connect(function() {
-//     try {
-//         console.log("Connected!");
-//         con.query("CREATE DATABASE meet_invest_bdd", function (err, result) {
-//             console.log("Database created");
-//         });
-//     } catch(err) {
-//         console.log(err);
-//     }
-//  });
-
-// db.connect(function() {
-//     try {
-//         console.log("Connected!");
-//         var sql = "CREATE TABLE entrepreneurs (id INT AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(255), lastname VARCHAR(255), address VARCHAR(255), cp INT, city VARCHAR(255), country VARCHAR(255), mail VARCHAR(255), phone INT, raison_sociale VARCHAR(255), siret INT, capital_social INT, ca INT)";
-//         con.query(sql, function (err, result) {
-//             try {
-//                 console.log("Table created");
-//             } catch(err) {
-//                 if (err) throw err;
-//             }
-//         });    
-//     } catch(err) {
-//         if (err) throw err;
-//     } 
-// });
+// Create entrepreneurs table
+app.get('/createentrepreneurstable', (req, res) => {
+  let sql = 'CREATE TABLE entrepreneurs (id INT AUTO_INCREMENT, firstname VARCHAR(255), lastname VARCHAR(255), address VARCHAR(255), cp INT, city VARCHAR(255), country VARCHAR(255), mail VARCHAR(255), phone INT, raison_sociale VARCHAR(255), siret INT, capital_social INT, ca INT, PRIMARY KEY(id)';
+  db.query(sql, (err, result) => {
+    if(err) throw err;
+    console.log(result);
+    res.send('Entrepreneurs table created');
+  });
+});
 
 // db.connect(function() {
 //     try {
@@ -65,10 +49,10 @@ app.get('/createdb', (req, res) => {
 //             } catch(err) {
 //                 if (err) throw err;
 //             }
-//         });    
+//         });
 //     } catch(err) {
 //         if (err) throw err;
-//     } 
+//     }
 // });
 
 // db.connect(function() {
@@ -81,10 +65,10 @@ app.get('/createdb', (req, res) => {
 //             } catch(err) {
 //                 if (err) throw err;
 //             }
-//         });    
+//         });
 //     } catch(err) {
 //         if (err) throw err;
-//     } 
+//     }
 // });
 
 
