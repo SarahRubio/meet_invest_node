@@ -1,8 +1,9 @@
 const express = require('express');
 const cors = require('cors')
+const bodyParser = require("body-parser")
 const mysql = require('mysql');
 
-// create connection
+// création de la connexion à la base de données mySQL
 const db = mysql.createConnection({
     host:'localhost',
     user: 'root',
@@ -10,7 +11,7 @@ const db = mysql.createConnection({
     database: 'meetinvestdb'
 });
 
-// Connect
+// Connexion à la base de données
 db.connect((err) => {
     if(err){
         throw err;
@@ -20,16 +21,29 @@ db.connect((err) => {
 
 const app = express();
 
+// Utilisation du middleware cors pour éviter les problèmes de Same Origin
 app.use(cors());
 
-// Select posts
+// Utilisation du middleware body-parser pour convertir
+app.use(bodyParser.json())
+
+// Selectionner tous les projets
 app.get('/projets', (req, res) => {
     let sql = 'SELECT * FROM projets';
     db.query(sql, (err, results) => {
         if(err) throw err;
         res.status(200).send(results);
     })
-})
+});
+
+// Selectionner un projet
+app.get('/projet/:id', (req, res) => {
+    let sql = "SELECT * FROM projets WHERE id=" + req.params.id;
+    db.query(sql, (err, result) => {
+        if(err) throw err;
+        res.status(200).send(result);
+    })
+});
 
 // Create entrepreneurs table : fait sur Workbench : plus sécure
 // app.get('/createentrepreneurstable', (req, res) => {
