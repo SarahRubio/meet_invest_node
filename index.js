@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 const mysql = require('mysql');
 
 // create connection
@@ -19,15 +20,16 @@ db.connect((err) => {
 
 const app = express();
 
-// Create db
-// app.get('/createdb', (req, res) => {
-//     let sql = 'CREATE DATABASE meetinvestdb';
-//     db.query(sql, (err, result) => {
-//         if(err) throw err;
-//         console.log(result)
-//         res.send('database created...')
-//     })
-// })
+app.use(cors());
+
+// Select posts
+app.get('/projets', (req, res) => {
+    let sql = 'SELECT * FROM projets';
+    db.query(sql, (err, results) => {
+        if(err) throw err;
+        res.status(200).send(results);
+    })
+})
 
 // Create entrepreneurs table : fait sur Workbench : plus sécure
 // app.get('/createentrepreneurstable', (req, res) => {
