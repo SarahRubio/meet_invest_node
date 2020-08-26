@@ -23,6 +23,8 @@ const app = express();
 app.use(cors());
 
 // Select posts
+// à quoi correspond le '/projets' ?
+// cf entrepreneurs.vue ou accueil dans views/fichiers .vue
 app.get('/projets', (req, res) => {
     let sql = 'SELECT * FROM projets';
     db.query(sql, (err, results) => {
