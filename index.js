@@ -45,6 +45,15 @@ app.get('/projet/:id', (req, res) => {
     })
 });
 
+// Selectionner les trois derniers projets
+app.get('/projets3', (req, res) => {
+    let sql = "SELECT * FROM projets ORDER BY id DESC LIMIT 3";
+    db.query(sql, (err, result) => {
+        if(err) throw err;
+        res.status(200).send(result);
+    })
+});
+
 // Create entrepreneurs table : fait sur Workbench : plus sécure
 // app.get('/createentrepreneurstable', (req, res) => {
 //   let sql = 'CREATE TABLE entrepreneurs (id INT AUTO_INCREMENT, firstname VARCHAR(255), lastname VARCHAR(255), address VARCHAR(255), cp INT, city VARCHAR(255), country VARCHAR(255), mail VARCHAR(255), phone INT, raison_sociale VARCHAR(255), siret INT, capital_social INT, ca INT, PRIMARY KEY(id)';
