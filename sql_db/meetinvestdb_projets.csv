@@ -1,0 +1,6 @@
+id,project_title,category,entrepreneur_id,description,financial_needs,other_needs,video_link,web
+1,Ethically,Écologie,"Sophie Cheav","Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione ea, quaerat at libero perferendis necessitatibus illum facere officia. Velit aperiam in sequi suscipit nostrum blanditiis minus qui tenetur nisi voluptatibus",10000,"Des pots de fleurs",NULL,NULL
+2,Soyons-Sport,Social,"Adrien Richard","Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione ea, quaerat at libero perferendis necessitatibus illum facere officia. Velit aperiam in sequi suscipit nostrum blanditiis minus qui tenetur nisi voluptatibus",30000,"des altères",NULL,NULL
+3,Zoiseaux,Emploi,"Sarah Rubio","Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione ea, quaerat at libero perferendis necessitatibus illum facere officia. Velit aperiam in sequi suscipit nostrum blanditiis minus qui tenetur nisi voluptatibus",20000,Graines,NULL,NULL
+4,Ethically,Écologie,"Nathalie Menudier","Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione ea, quaerat at libero perferendis necessitatibus illum facere officia. Velit aperiam in sequi suscipit nostrum blanditiis minus qui tenetur nisi voluptatibus",20000,Tutu,NULL,NULL
+5,Abracadabra,Social,NULL,bkmvbfklbvfkelvklbebhsjbvfhbfh,15000,Marketing,http://youpi.com,www.blabla.com

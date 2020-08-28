@@ -3,6 +3,10 @@ const cors = require('cors')
 const bodyParser = require("body-parser")
 const mysql = require('mysql');
 
+// const {JsonDB} = require('node-json-db');
+// const {Config} = require('node-json-db/dist/lib/JsonDBConfig');
+// const path = require('path');
+
 // création de la connexion à la base de données mySQL
 const db = mysql.createConnection({
     host:'localhost',
@@ -26,6 +30,11 @@ app.use(cors());
 
 // Utilisation du middleware body-parser pour convertir
 app.use(bodyParser.json())
+// Nathan nous avait dit qu'il était conseillé de mettre ça...
+// mais je ne sais plus bien pourquoi...
+// app.use(bodyParser.urlencoded
+// ({extended: true})
+// );
 
 // Selectionner tous les projets
 app.get('/projets', (req, res) => {
@@ -52,6 +61,118 @@ app.get('/projets3', (req, res) => {
         if(err) throw err;
         res.status(200).send(result);
     })
+});
+
+// Envoyer tous les champs du formulaire d'inscription entrepreneur
+// sur la BDD / table entrepreneurs : requête POST
+app.post("/entrepreneurs", (req, res) => {
+  console.log(req.body);
+
+  if (req.body.firstname
+    && req.body.lastname
+    && req.body.address
+    && req.body.cp
+    && req.body.city
+    && req.body.country
+    && req.body.mail
+    && req.body.password
+    && req.body.phone
+    && req.body.corporate_name
+    && req.body.siret
+    && req.body.share_capital
+    && req.body.sales) {
+
+      let firstnameval = req.body.firstname;
+      let lastnameval = req.body.lastname;
+      let addressval = req.body.address;
+      let cpval = req.body.cp;
+      let cityval = req.body.city;
+      let countryval = req.body.country;
+      let mailval = req.body.mail;
+      let passwordval = req.body.password;
+      let phoneval = req.body.phone;
+      let corporatenameval = req.body.corporate_name;
+      let siretval = req.body.siret;
+      let sharecapitalval = req.body.share_capital;
+      let salesval = req.body.sales;
+
+      let sql = "INSERT INTO entrepreneurs (firstname, lastname, address, cp, city, country, mail, password, phone, corporate_name, siret, share_capital, sales) VALUES ('" + firstnameval + "', '" + lastnameval + "', '" + addressval + "', '" + cpval + "', '" + cityval + "', '" + countryval + "', '" + mailval + "', '" + passwordval + "', '" + phoneval + "', '" + corporatenameval + "', '" + siretval + "', '" + sharecapitalval + "', '" + salesval + "')";
+
+      db.query(sql, (err, result) => {
+        if(err) throw err;
+        res.status(200).send(result);
+      })
+    }
+});
+
+// requête POST sur la table projets :
+app.post("/projets", (req, res) => {
+  console.log(req.body);
+
+  if (req.body.title
+    && req.body.category
+    && req.body.description
+    && req.body.financial_needs
+    && req.body.other_needs
+    && req.body.video_link
+    && req.body.web) {
+
+      let titleval = req.body.title;
+      let categoryval = req.body.category;
+      let descriptionval = req.body.description;
+      let financialneedsval = req.body.financial_needs;
+      let otherneedsval = req.body.other_needs;
+      let videolinkval = req.body.video_link;
+      let webval = req.body.web;
+
+      let sql = "INSERT INTO projets (title, category, description, financial_needs, other_needs, video_link, web) VALUES ('" + titleval + "', '" + categoryval + "', '" + descriptionval + "', '" + financialneedsval + "', '" + otherneedsval + "', '" + videolinkval + "', '" + webval + "')";
+
+      db.query(sql, (err, result) => {
+        if(err) throw err;
+        res.status(200).send(result);
+      })
+    }
+});
+
+// requête POST sur la table investisseurs :
+app.post("/investisseurs", (req, res) => {
+  console.log(req.body);
+
+  if (req.body.firstname
+    && req.body.lastname
+    && req.body.address
+    && req.body.cp
+    && req.body.city
+    && req.body.country
+    && req.body.phone
+    && req.body.mail
+    && req.body.password
+    && req.body.risk
+    && req.body.amount_to_invest
+    && req.body.profitability
+    && req.body.why_invest) {
+
+      let firstnameval = req.body.firstname;
+      let lastnameval = req.body.lastname;
+      let addressval = req.body.address;
+      let cpval = req.body.cp;
+      let cityval = req.body.city;
+      let countryval = req.body.country;
+      let phoneval = req.body.phone;
+      let mailval = req.body.mail;
+      let passwordval = req.body.password;
+      let riskval = req.body.risk;
+      let amountinvestval = req.body.amount_to_invest;
+      let profitabilityval = req.body.profitability;
+      let whyinvestval = req.body.why_invest;
+
+      let sql = "INSERT INTO investisseurs (firstname, lastname, address, cp, city, country, phone, mail, password, risk, amount_to_invest, profitability, why_invest) VALUES ('" + firstnameval + "', '" + lastnameval + "', '" + addressval + "', '" + cpval + "', '" + cityval + "', '" + countryval + "', '" + phoneval + "', '" + mailval + "', '" + passwordval + "', '" + riskval + "', '" + amountinvestval + "', '" + profitabilityval + "', '" + whyinvestval + "')";
+
+      db.query(sql, (err, result) => {
+        if(err) throw err;
+        res.status(200).send(result);
+      })
+    }
 });
 
 // Create entrepreneurs table : fait sur Workbench : plus sécure

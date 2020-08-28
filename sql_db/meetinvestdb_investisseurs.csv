@@ -1,0 +1,2 @@
+id,firstname,lastname,address,cp,city,country,phone,mail,password,risk,amount_to_invest,profitability,why_invest
+1,Sarah,Rubio,"30 rue ploumploum",75020,Paris,France,666966944,sarah@gmail.com,jinvestis,élevé,10000,500,"parce que"

@@ -1,0 +1,9 @@
+id,firstname,lastname,address,cp,city,country,mail,password,phone,corporate_name,siret,share_capital,sales
+1,Sarah,Rubio,"12 rue de Dordogne",24100,Bergerac,France,sarah@email.com,admin,666966944,Sarah-Thés,70896512,25000,35000
+2,Rubio,Sarah,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL
+3,Imbert,Malo,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL
+4,undefined,undefined,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL
+5,Youhouhou,Youpi,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL
+6,Chamouraï,Chacha,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL
+7,Chamouraï,Chacha,"17 rue des Rigoles",75020,Paris,France,chacha@email.com,blabla,684397072,"Croquettes SARL",7562895,64000,38000
+8,Chamouraï,Chacha,"17 rue des Rigoles",75020,Paris,France,chacha@email.com,blabla,684397072,"Croquettes SARL",7562895,64000,38000
