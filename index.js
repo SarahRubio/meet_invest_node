@@ -45,13 +45,22 @@ app.get('/projets', (req, res) => {
     })
 });
 
-// Selectionner un projet
+// Selectionner un projet par identifiant
 app.get('/projet/:id', (req, res) => {
     let sql = "SELECT * FROM projets WHERE id=" + req.params.id;
     db.query(sql, (err, result) => {
         if(err) throw err;
         res.status(200).send(result);
     })
+});
+
+// Selectionner les projets par category
+app.get('/projetsCat/:category', (req, res) => {
+  let sql = "SELECT * FROM projets WHERE category =" + "'" + req.params.category + "'";
+  db.query(sql, (err, result) => {
+      if(err) throw err;
+      res.status(200).send(result);
+  })
 });
 
 // Selectionner les trois derniers projets
@@ -77,7 +86,7 @@ app.post("/entrepreneurs", (req, res) => {
     && req.body.phone
     && req.body.mail
     && req.body.corporate_name
-    && req.body.siret
+    && req.body.siret 
     && req.body.share_capital
     && req.body.sales
     && req.body.financial_needs
